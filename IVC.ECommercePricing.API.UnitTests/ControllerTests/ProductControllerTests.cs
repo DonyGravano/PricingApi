@@ -8,6 +8,9 @@ using IVC.ECommercePricing.API.Controllers;
 using IVC.ECommercePricing.Application;
 using IVC.ECommercePricing.Application.Models;
 using Microsoft.AspNetCore.Mvc;
+using AutoFixture.AutoMoq;
+using AutoFixture.Idioms;
+using AutoFixture;
 
 namespace IVC.ECommercePricing.API.UnitTests.ControllerTests
 {
@@ -20,6 +23,12 @@ namespace IVC.ECommercePricing.API.UnitTests.ControllerTests
         {
             _mockProductRepository = new Mock<IProductRepository>();
             _controller = new ProductController(_mockProductRepository.Object);
+        }
+        [Fact]
+        public void Constructor_EnsureNotNullAndCorrectExceptionParameterName()
+        {
+            var assertion = new GuardClauseAssertion(new Fixture().Customize(new AutoMoqCustomization()));
+            assertion.Verify(typeof(ProductController).GetConstructors());
         }
 
         [Fact]
