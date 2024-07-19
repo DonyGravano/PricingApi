@@ -1,0 +1,6 @@
+@IVC.ECommercePricing.API_HostAddress = http://localhost:5093
+
+GET {{IVC.ECommercePricing.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
